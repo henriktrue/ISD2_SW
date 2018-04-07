@@ -1,13 +1,13 @@
 #include "connect.h"
 
-connect::connect()
+TCPClient::TCPClient()
 {
 	sock = -1;
 	port = 0;
 	address = "";
 }
 
-bool connect::setup(string address , int port)
+bool TCPClient::setup(string address , int port)
 {
   	if(sock == -1)
 	{
@@ -48,9 +48,9 @@ bool connect::setup(string address , int port)
   	return true;
 }
 
-bool connect::Send(string data)
+bool TCPClient::Send(string data)
 {
-	if(sock != -1) 
+	if(sock != -1)
 	{
 		if( send(sock , data.c_str() , strlen( data.c_str() ) , 0) < 0)
 		{
@@ -63,7 +63,7 @@ bool connect::Send(string data)
 	return true;
 }
 
-string connect::receive(int size)
+string TCPClient::receive(int size)
 {
   	char buffer[size];
 	memset(&buffer[0], 0, sizeof(buffer));
@@ -79,7 +79,7 @@ string connect::receive(int size)
   	return reply;
 }
 
-string connect::read()
+string TCPClient::read()
 {
   	char buffer[1] = {};
   	string reply;
@@ -94,7 +94,7 @@ string connect::read()
 	return reply;
 }
 
-void connect::exit()
+void TCPClient::exit()
 {
     close( sock );
 }
