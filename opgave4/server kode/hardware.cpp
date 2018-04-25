@@ -115,7 +115,7 @@ void load_direction(void)
 void load_value(int value)
 {
     system("configuring sensor");
-    //setting direction of sensor
+    //loads value of sensor 
     ofstream vse;
     const char * path = LOAD_LOC;
     char buffer[256];
@@ -124,7 +124,7 @@ void load_value(int value)
     sprintf (buffer, "%svalue", path);
     vse.open(buffer);
 
-    //write "BB-ADC" to slots
+    //write "value" to slots
     vse << "value";
     vse.close();
 }
